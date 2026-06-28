@@ -1,0 +1,45 @@
+name: ci 
+on:
+  push:
+    branches:
+      - main
+      - gh-pages
+permissions:
+  contents: write
+
+env:
+  CDN_DOMAIN: ${{ secrets.CDN_DOMAIN }}
+  TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+  TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+  TENCENT_REGION: ${{ secrets.TENCENT_REGION || 'ap-beijing' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+ 
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Setup cache
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+
+      - name: Cache dependencies
+        uses: actions/cache@v6
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      
+ 
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install ./dependencies/mkdocs_toc_plugin-0.0.1-py3-none-any.whl
+      
+      - run: mkdocs gh-deploy --force

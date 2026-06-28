@@ -1,0 +1,28 @@
+# OI
+
+!!! Abstract
+    这里是一些有关OI竞赛的内容
+
+    主要是一些竞赛题目的题解，以及一些算法相关的文章
+
+    可能一些工具类的文章也会放在一起。
+
+## Table Of Contents
+
+{{ BEGIN_TOC }}
+
+- "Algorithms":
+  - 并查集: Algorithms/并查集/
+  - 字典树: Algorithms/字典树/
+  - "线段树": OI/Algorithms/线段树
+  - "树状数组": OI/Algorithms/树状数组
+  - "ST表": OI/Algorithms/ST表
+  - 异或运算: Algorithms/xor/
+  - 分数规划: Algorithms/分数规划/
+  - 矩阵乘法: Algorithms/矩阵乘法/
+  - 矩阵加速递推: Algorithms/矩阵加速递推/
+- "Solution":
+  - "P13321 [GCJ 2012 #1C] Diamond Inheritance Solution": Solutions/P13321/
+  - "LeetCode 打家劫舍I-IV": Solutions/house-robber/
+
+{{ END_TOC }}

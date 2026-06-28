@@ -1,0 +1,221 @@
+site_name: GoodFish的笔记本
+site_url: https://note.goodfish.site/
+site_author: GoodFish
+repo_name: goodfish-jhy/note
+repo_url: https://github.com/GoodFish-Useless/note
+copyright: Copyright &copy; 2016 - 2026 GoodFish
+site_description: GoodFish的个人笔记本，记录OI、CTF、IPhO等内容，使用MkDocs搭建，支持Markdown语法。
+
+# Configuration
+theme:
+  a11y: true
+  favicon: /assets/image/logo.jpeg
+  icon: 
+    logo: material/notebook-outline
+  name: material
+  language: zh
+
+  palette:
+     # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/theme-light-dark
+        name: 切换到亮色模式
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: light_mode
+      accent: light_mode
+      primary: light_mode
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到暗色模式
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      accent: dark_mode
+      primary: dark_mode
+      toggle:
+        icon: material/weather-night
+        name: 切换到跟随系统设置
+
+  features:
+    - navigation.expand
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - header.autohide
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+
+markdown_extensions:
+  - codehilite
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta  # 元数据处理
+  # - sane_lists  # 智能列表处理
+  - pymdownx.critic  # 批注语法支持
+  - pymdownx.superfences:
+      preserve_tabs: true  # 保留代码块中的制表符
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extensions
+
+plugins:
+  - toc
+  - statistics
+  - glightbox
+  - search  # 内置搜索插件
+
+#   - encryptcontent:  # 内容加密插件
+#       password_file: 'passwords.yml'
+  
+  - git-revision-date-localized:  # 显示最后修改时间
+      type: "datetime"
+      timezone: "Asia/Shanghai"  # 时区设置
+      enable_creation_date: true # 显示修改和创建时间
+  
+  - minify:  # 压缩HTML输出
+      minify_html: true
+      minify_js: true
+      minify_css: true
+  
+  - rss: # RSS订阅支持
+      match_path: /*
+      categories:
+        - categories
+        - tags
+
+nav:
+  - Home:
+    - index.md
+  - OI:
+    - OI/index.md
+    - Solutions:
+      - "P13321 [GCJ 2012 #1C] Diamond Inheritance": OI/Solutions/P13321.md
+      - "P13718 [GCPC 2024] Copycat Catcher": OI/Solutions/P13718.md
+      - "LeetCode 打家劫舍I-IV": OI/Solutions/house-robber.md
+    - Algorithms:
+      - "并查集": OI/Algorithms/并查集.md
+      - "字典树": OI/Algorithms/字典树.md
+      - "线段树": OI/Algorithms/线段树.md
+      - "树状数组": OI/Algorithms/树状数组.md
+      - "ST表": OI/Algorithms/ST表.md
+      - "矩阵乘法": OI/Algorithms/矩阵乘法.md
+      - "异或运算": OI/Algorithms/xor.md
+      - "矩阵加速递推": OI/Algorithms/矩阵加速递推.md
+      - "分数规划": OI/Algorithms/分数规划.md
+  - CTF:
+    - CTF/index.md
+    - Problems & Solutions:
+      - Problems:
+        - "小G的照片": CTF/Problems/小G的照片.md
+        - "神秘的游戏卡带": CTF/Problems/神秘的游戏卡带.md
+      - Solutions:
+        - "小G的照片-Solution": CTF/Solutions/小G的照片-Solution.md
+        - "神秘的游戏卡带-Solution": CTF/Solutions/神秘的游戏卡带-Solution.md
+    - Misc:
+      - "隐写":
+        - "图像隐写": CTF/Misc/图像隐写.md
+        - "音频隐写": CTF/Misc/音频隐写.md
+  - IPhO:
+    - IPhO/index.md
+    - "Math":
+      - "弧度制": IPhO/弧度制.md
+      - "三角函数": IPhO/三角函数.md
+      - "向量": IPhO/向量.md
+      - "圆": IPhO/圆.md
+    - "Mechanics":
+      - "重力": IPhO/重力.md
+      - "弹力": IPhO/弹力.md
+      - "摩擦力": IPhO/摩擦力.md
+      - "力的合成与分解": IPhO/力的合成与分解.md
+      - "力的平衡": IPhO/力的平衡.md
+      - "牛顿三大定律": IPhO/牛顿三大定律.md
+    - "Kinematics":
+      - "牛顿三大定律": IPhO/牛顿三大定律.md
+      - "直线运动": IPhO/直线运动.md
+    - "Electricity":
+      - "基础电学": IPhO/基础电学.md
+      - "电功率与电能": IPhO/电功率与电能.md
+      - "电磁波": IPhO/电磁波.md
+  - Others:
+    - Others/index.md
+    - "Guide": 
+      - "MkDocs搭建个人笔记本": Others/mkdocs.md
+      - "HackNet攻略": Others/hacknet.md
+    - "TroubleShooting": Others/TroubleShooting.md
+
+extra_css:
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.5.0/style.css
+  - assets/katex/dist/katex.min.css
+  - assets/stylesheets/extra.css
+  - assets/font/style.css
+
+extra_javascript:
+  - assets/katex/dist/katex.min.js
+  - assets/katex/dist/contrib/auto-render.min.js
+  - assets/katex-autorender-init.js
+
+extra:
+  social:
+    - icon: "fontawesome/solid/rss"
+      link: "https://note.goodfish.site/feed_rss_created.xml"
+      name: "RSS"
+    - icon: "fontawesome/brands/github"
+      link: "https://github.com/goodfish-jhy"
+      name: "GitHub"
